@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+#foot_tab{
+	position : fixed;
+	bottom : 0px;
+	width : 100%;
+	background-color: #ccc;
+}
+
+
+
+.tab_label_container{
+	
+	height : 25px ;
+	text-align : left ;
+}
+
+.tab_title .tab_controll .tab_label{
+	
+	padding-top:5px;
+	height : 25px;
+}
+.tab_title{
+	width : 190	px;
+	text-align:center;
+	
+}
+.tab_controll{
+	float : right ;
+	width: 50px;
+	text-align:right;
+	padding-right:10px;
+}
+.tab_label{
+	float: left ;
+	margin-left : 2px;
+	text-align: center;
+	
+	color : #fff;
+	background-color : #5c5c5c;
+	
+}
+.tab_label a{
+	padding-top:5px;
+	display : block ;
+	height : 20px;
+	width : 190px;
+	color:#fff;
+	
+	
+}
+.tab_label a:hover{
+	display : block ;
+	color : #5c5c5c;
+	background-color : #fff;
+	
+}
+.tab_show{
+	background: #fff;
+	color : #5c5c5c;
+	border: 1px solid #5c5c5c;
+    border-bottom : 0px;
+    position: relative;
+    top: 0px;
+    z-index: 999;
+	
+}
+
+.tab_show a{
+	
+	color : #5c5c5c;
+	
+	
+}
+.tab_group{
+	float : left ;
+}
+.tab_content_container{
+	width : 100%;
+	position : relative;
+	height: 0px;
+	
+}
+.content_show{
+	display : block;
+}
+.tab_content{
+	
+	width: 100%;
+	border: 1px solid #5c5c5c;
+	position : absolute;
+	left:0px;
+	top : 0px;
+	height: 150px;
+	background-color: #ffffff;
+	opacity: 0.8;
+	display: none;
+	
+}

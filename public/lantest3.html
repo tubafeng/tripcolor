@@ -1,0 +1,21 @@
+<html>
+<body>
+</body>
+<script language='javascript'>
+
+
+var bc = function(){
+	var go = 'gogogog';
+};
+bc.extend = function(){
+	console.log(this.toString());
+};
+
+bc.extend();
+
+var bo =new bc();
+bo.extend = bc.extend;
+bo.extend();
+
+</script>
+</html>
