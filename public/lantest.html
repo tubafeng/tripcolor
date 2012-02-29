@@ -1,0 +1,95 @@
+<html>
+<head>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="../old_mage2/js/jap/miyako/js/ant.js"></script>
+<script type="text/javascript" src="../old_mage2/js/jap/miyako/js/unitTest.js"></script>
+<style type='text/css'>
+body{
+	background-color: #000;
+}
+.circle{
+	width: 100px;
+	height : 100px;
+    background-color: #5c5c5c;
+    position: absolute;
+	left : 400px; 
+    top : 200px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+}
+</style>
+</head>
+<body>
+</body>
+<div class='circle'>
+</div>
+
+<script language='javascript'>
+
+var circle = function(rad){
+	this.rad = rad;
+	this.shine();
+
+};
+circle.prototype = {
+	getId : function(){
+	
+	return this.id || (this.id ='ID'+Math.floor( 10000 *Math.random() +1000 * Math.random() +  100 *Math.random() + 10 * Math.random())) ;
+		
+	},
+	
+	getRandomColor: function(){
+		this.color = 'rgb(' + Math.floor(Math.random()*255) +',' +
+				              Math.floor(Math.random()*255) +',' +
+				              Math.floor(Math.random()*255)+')' ;
+		return this.color;
+	},
+	
+	
+	setColor: function(){
+		
+		this.getLayer().css({backgroundColor: this.getRandomColor()});
+	}, 
+	getLayer : function(){
+		return this.layer || this.createLayer();
+	},
+	
+	createLayer :function(){
+		 this.delay = Math.floor(Math.random()*1000)+300;
+		 this.left = Math.floor(Math.random()*jQuery(document).width());
+		 this.top = Math.floor(Math.random()*jQuery(document).height());
+		 this.layer = jQuery('<div id="'+ this.getId() +'"></div>')
+		          .css({position:'absolute',left:this.left, top: this.top, opacity: 0, height : this.rad*2 , width: this.rad*2, borderRadius:this.rad+'px', BorderRadius:this.rad})
+		          .appendTo(document.body);
+		 this.setColor();
+		 return this.layer;
+		 
+	},
+	shine: function(){
+		//console.log('shine start');
+		var that = this;
+		this.getLayer().stop().animate({opacity:0.7}, that.delay, function(){
+		 		  		   jQuery(this).animate({opacity:0},that.delay*2,function(){
+		 		  			   that.shine();
+		 		  		   });
+		 		  	   });
+	},
+};
+
+function dropCircles(){
+	var circleCount = 20;
+	function getRandomRad(){
+		return  Math.floor(Math.random()*50) + 25;
+	}
+	function getRandomDelay(){
+		return Math.floor(Math.random()*2000 + 500);
+	}
+	for (var i = 0 ;i< circleCount ; i ++){
+		var c = new circle(getRandomRad());
+	}
+	
+}
+
+dropCircles();
+</script>
+</html>
