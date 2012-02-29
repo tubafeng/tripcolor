@@ -74,6 +74,17 @@ function publicPage(response, request) {
             contype = 'image/png';
         }
             break;
+        case 'css':
+        {
+            contype = 'text/css';
+        }
+            break;
+        case 'js':
+        {
+            contype = 'application/x-javascript';
+        }
+            break;
+
     }
 
     fs.readFile(pathname, "binary", function(error, file) {
