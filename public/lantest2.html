@@ -1,0 +1,31 @@
+<html>
+<body>
+</body>
+<script language='javascript'>
+
+
+
+var cst = function(){
+	console.log('in cst');
+}; 
+
+var originClass = function(){
+	var name = 'this is the origin Class';
+};
+
+originClass.method_a = function(){
+	var name = 'this is the method_a in origin class';
+	console.log(name);
+};
+var testClass = function(){
+	var name = 'this is the testClass';
+};
+
+testClass.prototype = new originClass();
+testClass.constructor = cst;
+
+var k = new testClass();
+
+
+</script>
+</html>

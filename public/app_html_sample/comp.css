@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#reg{
+	position:absolute;
+	left: 10px; 
+	top: 20px;
+	width: 300px;
+	height:500px;
+	border:1px solid #CCC;
+	padding-left:30px;
+	padding-top:30px;
+	}
+
+.icon_handle{
+	border:1px solid #CCC;
+	border-left: 1px solid #fff;
+	width: 49px;
+	height:100px;
+	position:absolute;
+	right:-50px;
+	background:#CCC;
+	
+	z-index:2;
+	
+	}
+.reg{
+	top: -1px;
+	}
+.login{
+	 top: 106px;
+	}
+
+.forget{
+	 top: 213px;
+	}
+.handle_active{
+	right:-51px !important;
+	background:none;
+	}
+.icon_handle a{
+	  position: relative;
+	  top:23%;
+	  opacity: 0.5;
+	}
+
+.icon_handle a:hover{
+	   opacity: 1;
+	}
+.form_splitter{
+	width: 80%;
+	}
+.reg_table{
+	 width: 80%;
+	}
+.reg_input{
+	 width: 40%;
+	}
+
+.reg_title{
+	 width: 20%;
+	}
+
+.reg_check{
+	width:10%;
+	}
+
+#reg_sub{
+	background: url('img/bg1.png') repeat scroll left top transparent;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    line-height: 50px !important;
+    text-align: center;
+    text-decoration: none;
+    width: 80%;
+	
+	}
