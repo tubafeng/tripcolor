@@ -13,6 +13,8 @@ var requestHandlers = require("./requestHandlers");
 
 var handle = {};
 handle["/"] = requestHandlers.start;
+handle["/testpage/"] = requestHandlers.testpage;
+handle["public"] = requestHandlers.publicpage;
 handle["/app/login/"] = requestHandlers.login;
 handle["/app/logout/"] = requestHandlers.logout;
 

@@ -7,10 +7,12 @@
  */
 
 var querystring = require("querystring");
+var fs = require("fs");
+var url = require("url");
 
 
-function start(response, request) {
-    console.log("Request handler 'start' was called.");
+function startTest(response, request) {
+    console.log("Request handler 'startTest' was called.");
 
     var body = '<html>' +
         '<head>' +
@@ -29,6 +31,62 @@ function start(response, request) {
     response.writeHead(200, {"Context-Type": "text/html"});
     response.write(body);
     response.end();
+}
+
+function start(response, request) {
+    console.log("Request handler 'start' was called.");
+
+    fs.readFile("./public/index.html", "binary", function(error, file) {
+        if (error) {
+            response.writeHead(500, {"Content-Type": "test/plain"});
+            response.write(error + "\n");
+            response.end();
+        } else {
+            response.writeHead(200, {"Content-Type": "text/html"});
+            response.write(file, "binary");
+            response.end();
+        }
+    })
+
+}
+
+function publicPage(response, request) {
+    console.log("Request handler 'publicPage' was called.");
+
+    var pathname = url.parse(request.url).pathname;
+    pathname = '.' + pathname;
+    var pathtype = pathname.substring(pathname.lastIndexOf(".") + 1);
+    console.log("The path type of request : " + pathtype);
+    var contype = 'text/html';
+    switch (pathtype) {
+        case 'jpg':
+        {
+            contype = 'image/jpeg';
+        }
+            break;
+        case 'gif':
+        {
+            contype = 'image/gif';
+        }
+            break;
+        case 'png':
+        {
+            contype = 'image/png';
+        }
+            break;
+    }
+
+    fs.readFile(pathname, "binary", function(error, file) {
+        if (error) {
+            response.writeHead(500, {"Content-Type": "test/plain"});
+            response.write(error + "\n");
+            response.end();
+        } else {
+            response.writeHead(200, {"Content-Type": contype});
+            response.write(file, "binary");
+            response.end();
+        }
+    })
 }
 
 function login(response, request) {
@@ -70,5 +128,7 @@ function logout(response, request) {
 
 
 exports.start = start;
+exports.testpage = startTest;
 exports.login = login;
 exports.logout = logout;
+exports.publicpage = publicPage;
